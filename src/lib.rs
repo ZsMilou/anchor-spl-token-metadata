@@ -20,7 +20,7 @@ pub mod anchor_token_metadata {
         seller_fee_basis_points: u16,
         update_authority_is_signer: bool,
         is_mutable: bool,
-    ) -> ProgramResult {
+    ) -> Result<()> {
         let ix = create_metadata_ix(
             *ctx.accounts.token_metadata_program.key,
             *ctx.accounts.metadata.key,
@@ -56,7 +56,7 @@ pub mod anchor_token_metadata {
         new_update_authority: Option<Pubkey>,
         data: Option<Data>,
         primary_sale_happened: Option<bool>,
-    ) -> ProgramResult {
+    ) -> Result<()> {
         let ix = update_metadata_accounts(
             ctx.accounts.token_metadata_program.key(),
             ctx.accounts.metadata.key(),
