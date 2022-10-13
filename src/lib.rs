@@ -11,6 +11,8 @@ pub mod anchor_token_metadata {
         state::{Creator, Data},
     };
 
+    pub type Result<T> = std::result::Result<T, error::Error>;
+
     pub fn create_metadata<'a, 'b, 'c, 'info>(
         ctx: CpiContext<'a, 'b, 'c, 'info, CreateMetadata<'info>>,
         name: String,
