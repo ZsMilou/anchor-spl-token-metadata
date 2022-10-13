@@ -11,7 +11,7 @@ pub mod anchor_token_metadata {
         state::{Creator, Data},
     };
 
-    pub type Result<T> = std::result::Result<T, error::Error>;
+    pub type Result<T> = std::result::Result<T, ProgramError>;
 
     pub fn create_metadata<'a, 'b, 'c, 'info>(
         ctx: CpiContext<'a, 'b, 'c, 'info, CreateMetadata<'info>>,
@@ -78,10 +78,10 @@ pub mod anchor_token_metadata {
     #[derive(Clone)]
     pub struct TokenMetadata;
     impl anchor_lang::AccountDeserialize for TokenMetadata {
-        fn try_deserialize(buf: &mut &[u8]) -> Result<Self, ProgramError> {
+        fn try_deserialize(buf: &mut &[u8]) -> Result<Self> {
             TokenMetadata::try_deserialize_unchecked(buf)
         }
-        fn try_deserialize_unchecked(_buf: &mut &[u8]) -> Result<Self, ProgramError> {
+        fn try_deserialize_unchecked(_buf: &mut &[u8]) -> Result<Self> {
             Ok(TokenMetadata)
         }
     }
