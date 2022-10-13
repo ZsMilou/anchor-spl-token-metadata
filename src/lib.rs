@@ -85,7 +85,7 @@ pub mod anchor_token_metadata {
             Ok(TokenMetadata)
         }
     }
-    impl anchor_lang::Owner for TokenAccount {
+    impl anchor_lang::Owner for TokenMetadata {
         fn owner() -> Pubkey {
             spl_token_metadata::ID
         }
